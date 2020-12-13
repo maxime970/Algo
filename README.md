@@ -1,8 +1,14 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
 # Explication des algorithmes
 
 ## Naive:
 
-Complexité: $O(n^2)$
+Complexité: O(n^2)
 
 L'algorithme prend en entrée un tableau v de doubles à une dimension 
 et retourne le sous tableau de somme maximale
@@ -18,7 +24,8 @@ Nous retournons finalement le maximum.
 
 ## Kadane:
 
-Complexité: $O(n)$
+Complexité: O(n)
+
 L'algorithme prend en entrée un tableau v de doubles à une dimension 
 et retourne le sous tableau de somme maximale
 Nous parcourons une seule fois la liste.
@@ -45,3 +52,50 @@ nous devons également actualiser la nouvelle borne sup (borne sup = i)
 nous avons parcouru toute la liste et nous avons vérifier à chaque fois si l'on
 pouvais trouver un sous tableau plus grand que celui définit au début
 finalement nous retournons la valeur du maximum global.
+
+
+## Maximum subarray sum
+
+Input: un tableau d'entiers A de taille n ??? 1
+
+Output: maxSum, indxD´ebut, indxFin
+
+1 Déclarer les variables locales currentSum, maxSum, indxDebut, indxFin puis les initialiser à 0,
+
+Declarer 3 vecteurs de taille initiale 1 C, I, J et qui sont initialisés à 0
+
+2 Vérifier:
+
+(I) Si A est vide, alors:
+Une exception sera renvoyée à l'utilisateur
+
+(II) Si n == 1, alors:
+return maxSum = A[1], indxDebut  = indxFin = 1
+
+3 Sinon, pour tout i allant de 1 jusqu'à n:
+
+currentSum+ = A[i]
+
+(a) Si currentSum ??? 0:
+
+currentSum = 0
+Ajouter l0, indice i vecteur au J
+
+(b) Si currentSum > 0 et maxSum >= currentSum:
+
+Ajouter l0, indice i au vecteur C
+
+(c) Si currentSum > maxSum:
+
+maxSum = currentSum, Ajouter l0, indice i au vecteur I, i = i + 1.
+
+7 A la fin des itérations: Compute indxFin, et indxDebut
+
+indxFin = max(I)
+
+8 indxDebut = min {min(C[C > max(J[J < indxFin])]), min(I[I > max(J[J <indxFin])])}
+
+
+
+
+
