@@ -56,39 +56,8 @@ NumericVector kadane_cpp(NumericVector v)
   return res;
 }
 
-/*
-// [[Rcpp::export]]
-double Midpoint_Crosssum(NumericVector v, int low, int mid, int high) 
-{ 
-  int sum = 0; 
-  double leftsum = -INFINITY; 
-  for (int i=mid; i >= low; i--) 
-  { 
-    sum += v[i]; 
-    if (sum >= leftsum) 
-      leftsum = sum; 
-  } 
-  sum = 0; 
-  int rightsum = -INFINITY; 
-  for (int i=mid+1; i <= high; i++) 
-  { 
-    sum += v[i]; 
-    if (sum > rightsum) 
-      rightsum = sum; 
-  } 
-  return leftsum + rightsum; 
-} 
 
-// [[Rcpp::export]]
-NumericVector Left_Right_MaximumSubarray(NumericVector v, int low, int high) 
-{  
-  if (low == high) 
-    return v[low];  
-  else 
-  {
-    int mid = (low + high)/2; 
-    return std::max<double>(std::max<double>(Left_Right_MaximumSubarray(v, low, mid), Left_Right_MaximumSubarray(v, mid+1, high)), Midpoint_Crosssum(v, low, mid, high));
-  }   
-}
-*/
+
+
+
 
