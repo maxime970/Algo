@@ -1,0 +1,41 @@
+[
+    {
+        "file": "C:/Users/Maxim/Documents/Rprojects/src/rcpp_hello_world.cpp",
+        "file_last_write": 1602173986.0,
+        "definitions": [
+            {
+                "usr": "c:@F@rcpp_hello_world#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "rcpp_hello_world",
+                "file": "C:/Users/Maxim/Documents/Rprojects/src/rcpp_hello_world.cpp",
+                "line": 6,
+                "column": 6
+            }
+        ]
+    },
+    {
+        "file": "C:/Users/Maxim/Documents/Rprojects/src/test.cpp",
+        "file_last_write": 1602176613.0,
+        "definitions": [
+            {
+                "usr": "c:@F@timesTwo#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "timesTwo(Rcpp::NumericVector)",
+                "file": "C:/Users/Maxim/Documents/Rprojects/src/test.cpp",
+                "line": 15,
+                "column": 15
+            },
+            {
+                "usr": "c:@F@insertion_sort_cpp#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "insertion_sort_cpp(Rcpp::NumericVector)",
+                "file": "C:/Users/Maxim/Documents/Rprojects/src/test.cpp",
+                "line": 20,
+                "column": 15
+            }
+        ]
+    }
+]

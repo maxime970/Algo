@@ -1,0 +1,10 @@
+{
+    "args": [
+        "-IC:/Program Files/RStudio/resources/libclang/builtin-headers/5.0.2",
+        "-IC:/Program Files/RStudio/resources/libclang/builtin-headers/libc++/5.0.2",
+        "-IC:/Users/Maxim/Documents/R/win-library/4.0/Rcpp/include"
+    ],
+    "pch": "Rcpp",
+    "is_cpp": true,
+    "hash": "1602173986"
+}
