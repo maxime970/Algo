@@ -8,25 +8,25 @@ output:
 
 ## Naive:
 
-Complexité: O(n^2)
+ComplexitÃ©: O(n^2)
 
-L'algorithme prend en entrée un tableau v de doubles à une dimension 
+L'algorithme prend en entrÃ©e un tableau v de doubles Ã  une dimension 
 et retourne le sous tableau de somme maximale
 
 Nous utilisons une borne inf (start) et une borne sup (end) afin de 
-délimiter le sous tableau de taille maximale
+dÃ©limiter le sous tableau de taille maximale
 
 Nous testons tout simplement toutes les combinaisons possibles de sous tableau
-et nous gardons en mémoire le maximum trouvé.
+et nous gardons en mÃ©moire le maximum trouvÃ©.
 Nous retournons finalement le maximum.
 
 
 
 ## Kadane:
 
-Complexité: O(n)
+ComplexitÃ©: O(n)
 
-L'algorithme prend en entrée un tableau v de doubles à une dimension 
+L'algorithme prend en entrÃ©e un tableau v de doubles Ã  une dimension 
 et retourne le sous tableau de somme maximale
 Nous parcourons une seule fois la liste.
 Nous utilisons un maximum local (max) et un maximum global (globalMax) ainsi 
@@ -36,21 +36,21 @@ sous tableau de somme maximale.
 Pour tout i dans [1:n]:
 
 si v[i] > v[i] + max
-on en déduit que la borne inf doit être avancée car l'élément actuel est plus grand 
-que la somme du sous tableau allant de la borne inf à l'élément actuel.
-on définit donc la nouvelle borne inf à l'élément actuel (borne inf = i)
-on définit donc le nouveau max local comme étant la valeur de l'élément actuel (max = v[i])
+on en dÃ©duit que la borne inf doit Ãªtre avancÃ©e car l'Ã©lÃ©ment actuel est plus grand 
+que la somme du sous tableau allant de la borne inf Ã  l'Ã©lÃ©ment actuel.
+on dÃ©finit donc la nouvelle borne inf Ã  l'Ã©lÃ©ment actuel (borne inf = i)
+on dÃ©finit donc le nouveau max local comme Ã©tant la valeur de l'Ã©lÃ©ment actuel (max = v[i])
 
 si ce n'est pas le cas:
-c'est que le max local peut être encore augmenté donc on garde notre borne inf actuelle et 
-nous ajoutons l'élément actuel au max (max = max + v[i])
+c'est que le max local peut Ãªtre encore augmentÃ© donc on garde notre borne inf actuelle et 
+nous ajoutons l'Ã©lÃ©ment actuel au max (max = max + v[i])
 
 si notre globalMax <= max
-nous devons garder en mémoire le plus grand max local (globalMax = max)
-nous devons également actualiser la nouvelle borne sup (borne sup = i)
+nous devons garder en mÃ©moire le plus grand max local (globalMax = max)
+nous devons Ã©galement actualiser la nouvelle borne sup (borne sup = i)
 
-nous avons parcouru toute la liste et nous avons vérifier à chaque fois si l'on
-pouvais trouver un sous tableau plus grand que celui définit au début
+nous avons parcouru toute la liste et nous avons vÃ©rifier Ã  chaque fois si l'on
+pouvais trouver un sous tableau plus grand que celui dÃ©finit au dÃ©but
 finalement nous retournons la valeur du maximum global.
 
 
@@ -58,21 +58,21 @@ finalement nous retournons la valeur du maximum global.
 
 Input: un tableau d'entiers A de taille n ??? 1
 
-Output: maxSum, indxD´ebut, indxFin
+Output: maxSum, indxDÂ´ebut, indxFin
 
-1 Déclarer les variables locales currentSum, maxSum, indxDebut, indxFin puis les initialiser à 0,
+1 DÃ©clarer les variables locales currentSum, maxSum, indxDebut, indxFin puis les initialiser Ã  0,
 
-Declarer 3 vecteurs de taille initiale 1 C, I, J et qui sont initialisés à 0
+Declarer 3 vecteurs de taille initiale 1 C, I, J et qui sont initialisÃ©s Ã  0
 
-2 Vérifier:
+2 VÃ©rifier:
 
 (I) Si A est vide, alors:
-Une exception sera renvoyée à l'utilisateur
+Une exception sera renvoyÃ©e Ã  l'utilisateur
 
 (II) Si n == 1, alors:
 return maxSum = A[1], indxDebut  = indxFin = 1
 
-3 Sinon, pour tout i allant de 1 jusqu'à n:
+3 Sinon, pour tout i allant de 1 jusqu'Ã  n:
 
 currentSum+ = A[i]
 
@@ -89,13 +89,17 @@ Ajouter l0, indice i au vecteur C
 
 maxSum = currentSum, Ajouter l0, indice i au vecteur I, i = i + 1.
 
-7 A la fin des itérations: Compute indxFin, et indxDebut
+7 A la fin des itÃ©rations: Compute indxFin, et indxDebut
 
 indxFin = max(I)
 
 8 indxDebut = min {min(C[C > max(J[J < indxFin])]), min(I[I > max(J[J <indxFin])])}
 
 
+
+VidÃ©o proposant plusieurs approches au problÃ¨me :
+
+https://www.youtube.com/watch?v=GBuHSRDGZBY
 
 
 
