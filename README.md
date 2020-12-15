@@ -99,7 +99,6 @@ indxFin = max(I)
 
 Vidéo proposant plusieurs approches au problème :
 
-https://www.youtube.com/watch?v=GBuHSRDGZBY
-
+https://www.youtube.com/watch?v=XKu_SEDAykw
 
 
