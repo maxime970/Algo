@@ -31,7 +31,7 @@ kadane_r <- function(v)
   # KADANE's algorithm
   # complexity: O(n)
   # on parcourt une seule fois la liste
-  # on actualise le max et les bornes au fur et � mesure du parcours
+  # on actualise le max et les bornes au fur et à mesure du parcours
   n = length(v)
   start = 0
   end = 0
@@ -100,6 +100,27 @@ max_partial_sum_r <- function(A){
     return(list(MaxSum=maxSum, indx_start = indx_start, indx_end = indx_end))
   }
 }
+
+
+tmp_tab <- function(tab){
+
+  # complexité linéaire
+  # on parcourt la liste une fois et on regroupe et somme les éléments positifs
+  
+  res <- c(tab[1])
+  for (i in (1:(length(tab)-1))){
+    if ( tab[i]>0 & tab[i+1]>0 ){
+      res[length(res)] <- tab[i]+tab[i+1]
+    } else{
+      res <- c(res, tab[i+1])
+    }
+  }
+  return(res)
+}
+
+# v <- c(7, -15, -9, 4, 9, 6, -12, 5, 11, -7)
+# tmp_tab(v)
+
 
 benchmark <- function(n)
 {
