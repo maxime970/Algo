@@ -1,3 +1,9 @@
+# Auteurs 
+
+Maxime GRANDVAUX
+Guillaume SHI DE MILLEVILLE
+Sidiya BABAH
+
 # Explication des algorithmes
 
 ## Naive:
@@ -50,7 +56,7 @@ finalement nous retournons la valeur du maximum global.
 
 ## Maximum subarray sum
 
-Input: un tableau d'entiers A de taille n ??? 1
+Input: un tableau d'entiers A de taille n >= 1
 
 Output: maxSum, indxD´ebut, indxFin
 
