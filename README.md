@@ -1,7 +1,9 @@
 # Auteurs 
 
 Maxime GRANDVAUX
+
 Guillaume SHI DE MILLEVILLE
+
 Sidiya BABAH
 
 # Explication des algorithmes
