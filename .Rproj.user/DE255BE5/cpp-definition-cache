@@ -1,5 +1,29 @@
 [
     {
+        "file": "C:/Users/Maxim/Documents/GitHub/Algo/src/main.cpp",
+        "file_last_write": 1608138536.0,
+        "definitions": [
+            {
+                "usr": "c:@F@naive_cpp#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "naive_cpp(Rcpp::NumericVector)",
+                "file": "C:/Users/Maxim/Documents/GitHub/Algo/src/main.cpp",
+                "line": 5,
+                "column": 15
+            },
+            {
+                "usr": "c:@F@kadane_cpp#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "kadane_cpp(Rcpp::NumericVector)",
+                "file": "C:/Users/Maxim/Documents/GitHub/Algo/src/main.cpp",
+                "line": 30,
+                "column": 15
+            }
+        ]
+    },
+    {
         "file": "C:/Users/Maxim/Documents/Rprojects/src/rcpp_hello_world.cpp",
         "file_last_write": 1602173986.0,
         "definitions": [

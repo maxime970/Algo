@@ -5,43 +5,32 @@
 
 using namespace Rcpp;
 
-// rcpp_hello_world
-List rcpp_hello_world();
-RcppExport SEXP _Rprojects_rcpp_hello_world() {
+// naive_cpp
+NumericVector naive_cpp(NumericVector v);
+RcppExport SEXP _Rprojects_naive_cpp(SEXP vSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpp_hello_world());
+    Rcpp::traits::input_parameter< NumericVector >::type v(vSEXP);
+    rcpp_result_gen = Rcpp::wrap(naive_cpp(v));
     return rcpp_result_gen;
 END_RCPP
 }
-// timesTwo
-NumericVector timesTwo(NumericVector x);
-RcppExport SEXP _Rprojects_timesTwo(SEXP xSEXP) {
+// kadane_cpp
+NumericVector kadane_cpp(NumericVector v);
+RcppExport SEXP _Rprojects_kadane_cpp(SEXP vSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(timesTwo(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// insertion_sort_cpp
-NumericVector* insertion_sort_cpp(NumericVector* v);
-RcppExport SEXP _Rprojects_insertion_sort_cpp(SEXP vSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector* >::type v(vSEXP);
-    rcpp_result_gen = Rcpp::wrap(insertion_sort_cpp(v));
+    Rcpp::traits::input_parameter< NumericVector >::type v(vSEXP);
+    rcpp_result_gen = Rcpp::wrap(kadane_cpp(v));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_Rprojects_rcpp_hello_world", (DL_FUNC) &_Rprojects_rcpp_hello_world, 0},
-    {"_Rprojects_timesTwo", (DL_FUNC) &_Rprojects_timesTwo, 1},
-    {"_Rprojects_insertion_sort_cpp", (DL_FUNC) &_Rprojects_insertion_sort_cpp, 1},
+    {"_Rprojects_naive_cpp", (DL_FUNC) &_Rprojects_naive_cpp, 1},
+    {"_Rprojects_kadane_cpp", (DL_FUNC) &_Rprojects_kadane_cpp, 1},
     {NULL, NULL, 0}
 };
 

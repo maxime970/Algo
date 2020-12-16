@@ -7,10 +7,10 @@ NumericVector naive_cpp(NumericVector v)
   int n = v.length();
   int start = 0;
   int end = 0;
-  double max = -INFINITY;
+  int max = -INFINITY;
   for (int i=0; i<n; i++)
   {
-    double runningSum = 0;
+    int runningSum = 0;
     for (int j=i; j<n; j++)
     {
       runningSum += v[j];
@@ -32,8 +32,8 @@ NumericVector kadane_cpp(NumericVector v)
   int n = v.length();
   int start = 0;
   int end = 0;
-  double globalMax = -INFINITY;
-  double max = -INFINITY;
+  int globalMax = -INFINITY;
+  int max = -INFINITY;
   
   for (int i=0; i<n; i++) 
   {
