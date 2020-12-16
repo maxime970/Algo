@@ -1,2 +1,7 @@
-/src/RcppExports.o
-/src/Rprojects.dll
+  
+.Rhistory
+*~
+.Rproj.user
+*.o
+*.so
+
