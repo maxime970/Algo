@@ -1,16 +1,5 @@
----
-title: "test"
-output: pdf_document
----
-
-```{r}
 library(microbenchmark)
 library(Rcpp)
-```
-
-
-```{r}
-# ALGORITHMS
 
 naive_r <- function(v)
 {
@@ -22,10 +11,10 @@ naive_r <- function(v)
   end <- 0
   n <- length(v)
   for (i in 1:n)
-    {
+  {
     runningSum <- 0
     for (j in i:n)
-      {
+    {
       runningSum <- runningSum + v[j]
       if (runningSum > max){
         max <- runningSum
@@ -42,7 +31,7 @@ kadane_r <- function(v)
   # KADANE's algorithm
   # complexity: O(n)
   # on parcourt une seule fois la liste
-  # on actualise le max et les bornes au fur et Ã  mesure du parcours
+  # on actualise le max et les bornes au fur et à mesure du parcours
   n = length(v)
   start = 0
   end = 0
@@ -70,12 +59,12 @@ kadane_r <- function(v)
 
 max_partial_sum_r <- function(A){
   
-  currentSum = 0 # a pointer that will look over the array and evaluate the accumulated                   sum at each iteration
+  currentSum = 0 # a pointer that will look over the array and evaluate the accumulated sum at each iteration
   
   maxSum = 0 # a variable that will help us to store the max of currentSum at each step
   
-  I = c(0); J = c(0); C =c() # a way to keep truck on the start and the end indices of the                                         subarray we are looking for
-# we initialize I and J with 0 to avoid -Inf returned by the max  if one of them is     epmty 
+  I = c(0); J = c(0); C =c() # a way to keep truck on the start and the end indices of the subarray we are looking for
+  # we initialize I and J with 0 to avoid -Inf returned by the max  if one of them is empty 
   
   if(length(A) == 1 & is.na(A[1]) == TRUE)
     stop("Not callable for an empty array") # we raise an exception
@@ -87,20 +76,20 @@ max_partial_sum_r <- function(A){
     
     for(i in 1:length(A)) {
       
-        currentSum = currentSum + A[i]
-        
-        if(currentSum <= 0) {
-          currentSum = 0
-          J = c(J, i)}
-        
-        if(currentSum >0 & maxSum >= currentSum)
-          C = c(C, i)
-          
-        if(maxSum < currentSum) {
-          maxSum = currentSum
-          I = c(I, i)
-        }
-        
+      currentSum = currentSum + A[i]
+      
+      if(currentSum <= 0) {
+        currentSum = 0
+        J = c(J, i)}
+      
+      if(currentSum >0 & maxSum >= currentSum)
+        C = c(C, i)
+      
+      if(maxSum < currentSum) {
+        maxSum = currentSum
+        I = c(I, i)
+      }
+      
     }
     
     
@@ -111,31 +100,17 @@ max_partial_sum_r <- function(A){
     return(list(MaxSum=maxSum, indx_start = indx_start, indx_end = indx_end))
   }
 }
-```
 
-```{r}
-# BENCHMARKS
-n <- 1000
-v <- sample(-n:n)
-
-nr <- naive_r(v)
-nr
-nc <- naive_cpp(v)
-nc
-kr <- kadane_r(v)
-kr
-kc <- kadane_cpp(v)
-kc
-mpsr <- max_partial_sum_r(v)
-mpsr
-time <- microbenchmark(kadane_cpp(v), kadane_r(v), naive_cpp(v), naive_r(v), max_partial_sum_r(v))
-time
-```
-
-
-
-
-
-
+benchmark <- function(n)
+{
+  v <- sample(-n:n)
+  nr <- naive_r(v)
+  nc <- naive_cpp(v)
+  kr <- kadane_r(v)
+  kc <- kadane_cpp(v)
+  mpsr <- max_partial_sum_r(v)
+  time <- microbenchmark(kadane_cpp(v), kadane_r(v), naive_cpp(v), naive_r(v), max_partial_sum_r(v))
+  return (time)
+}
 
 
