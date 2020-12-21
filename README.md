@@ -10,15 +10,15 @@ Sidiya BABAH
 
 ## Naive:
 
-Complexité: O(n^2)
+**Complexité**: O(n^2)
 
-L'algorithme prend en entrée un tableau v de doubles à une dimension 
+* L'algorithme prend en entrée un tableau v de doubles à une dimension 
 et retourne le sous tableau de somme maximale
 
-Nous utilisons une borne inf (start) et une borne sup (end) afin de 
+* Nous utilisons une borne inf (start) et une borne sup (end) afin de 
 délimiter le sous tableau de taille maximale
 
-Nous testons tout simplement toutes les combinaisons possibles de sous tableau
+* Nous testons tout simplement toutes les combinaisons possibles de sous tableau
 et nous gardons en mémoire le maximum trouvé.
 Nous retournons finalement le maximum.
 
@@ -26,81 +26,96 @@ Nous retournons finalement le maximum.
 
 ## Kadane:
 
-Complexité: O(n)
+**Complexité**: O(n)
 
-L'algorithme prend en entrée un tableau v de doubles à une dimension 
-et retourne le sous tableau de somme maximale
+* L'algorithme prend en entrée un tableau v de doubles à une dimension et retourne le sous tableau de somme maximale.
 Nous parcourons une seule fois la liste.
 Nous utilisons un maximum local (max) et un maximum global (globalMax) ainsi 
 qu'une borne inf et une borne sup afin de renseigner la position du
 sous tableau de somme maximale.
 
-Pour tout i dans [1:n]:
+* Pour tout i dans [1:n]:
 
-si v[i] > v[i] + max
+	* si v[i] > v[i] + max
 on en déduit que la borne inf doit être avancée car l'élément actuel est plus grand 
 que la somme du sous tableau allant de la borne inf à l'élément actuel.
 on définit donc la nouvelle borne inf à l'élément actuel (borne inf = i)
 on définit donc le nouveau max local comme étant la valeur de l'élément actuel (max = v[i])
 
-si ce n'est pas le cas:
+	* si ce n'est pas le cas:
 c'est que le max local peut être encore augmenté donc on garde notre borne inf actuelle et 
 nous ajoutons l'élément actuel au max (max = max + v[i])
 
-si notre globalMax <= max
+	* si notre globalMax <= max
 nous devons garder en mémoire le plus grand max local (globalMax = max)
 nous devons également actualiser la nouvelle borne sup (borne sup = i)
 
-nous avons parcouru toute la liste et nous avons vérifier à chaque fois si l'on
+* Nous avons parcouru toute la liste et nous avons vérifier à chaque fois si l'on
 pouvais trouver un sous tableau plus grand que celui définit au début
 finalement nous retournons la valeur du maximum global.
 
 
 ## Maximum subarray sum
 
-Input: un tableau d'entiers A de taille n >= 1
+**Input**: un tableau d'entiers A de taille n >= 1
 
-Output: maxSum, indxD´ebut, indxFin
+**Output**: maxSum, indxD´ebut, indxFin
 
-1 Déclarer les variables locales currentSum, maxSum, indxDebut, indxFin puis les initialiser à 0,
+1. Déclarer les variables locales currentSum, maxSum, indxDebut, indxFin puis les initialiser à 0,
 
-Declarer 3 vecteurs de taille initiale 1 C, I, J et qui sont initialisés à 0
+	* Declarer 3 vecteurs de taille initiale 1 C, I, J et qui sont initialisés à 0
 
-2 Vérifier:
+2. Vérifier:
 
-(I) Si A est vide, alors:
-Une exception sera renvoyée à l'utilisateur
+	* (I) Si A est vide, alors: Une exception sera renvoyée à l'utilisateur
 
-(II) Si n == 1, alors:
-return maxSum = A[1], indxDebut  = indxFin = 1
+	* (II) Si n == 1, alors: return maxSum = A[1], indxDebut  = indxFin = 1
 
-3 Sinon, pour tout i allant de 1 jusqu'à n:
+3. Sinon, pour tout i allant de 1 jusqu'à n:
 
-currentSum+ = A[i]
+	* currentSum+ = A[i]
 
-(a) Si currentSum ??? 0:
+4. Si currentSum ??? 0:
 
-currentSum = 0
-Ajouter l0, indice i vecteur au J
+	* currentSum = 0
+	* Ajouter l0, indice i vecteur au J
 
-(b) Si currentSum > 0 et maxSum >= currentSum:
+5. Si currentSum > 0 et maxSum >= currentSum:
 
-Ajouter l0, indice i au vecteur C
+	* Ajouter l0, indice i au vecteur C
 
-(c) Si currentSum > maxSum:
+6. Si currentSum > maxSum:
 
-maxSum = currentSum, Ajouter l0, indice i au vecteur I, i = i + 1.
+	* maxSum = currentSum, Ajouter l0, indice i au vecteur I, i = i + 1.
 
-7 A la fin des itérations: Compute indxFin, et indxDebut
+7. A la fin des itérations: Compute indxFin, et indxDebut
 
-indxFin = max(I)
+	* indxFin = max(I)
 
-8 indxDebut = min {min(C[C > max(J[J < indxFin])]), min(I[I > max(J[J <indxFin])])}
+8.  indxDebut = min {min(C[C > max(J[J < indxFin])]), min(I[I > max(J[J <indxFin])])}
 
 
+## Tableau concaténant et sommant les éléments positifs
 
+**Input**: un tableau d'entiers A de taille n >= 1
+
+**Output**: un vecteur d'entiers B de taille m>=1, m<=n
+
+* On parcourt la liste **une seule fois** et un renvoie un vecteur créer à partir du 1er mais en regroupant et en sommant les éléments positifs. La **complexité est donc linéaire** (O(n))
+
+* Ce vecteur est initialisé avec le premier élément du tableau. 
+
+* S'il y a au fil du parcourt du tableau donné en *input* deux éléments positifs successifs, le dernier élément du vecteur prend la somme des deux derniers éléments du tableau. Ainsi, si on rencontre 3 éléments positifs successifs a, b et c. Le dernier élément du vecteur prendre d'abord la valeur a+b, puis a+b+c.
+
+* Sinon, on ajoute l'élément au vecteur que l'on créer.
+
+Une telle fonction permet de simplifier le Max Subarray Problem puisqu'à la place de rechercher une somme d'éléments maximale, on n'effectue qu'une recherche de maximum.
+
+
+*Complément d'information :*
 Vidéo proposant plusieurs approches au problème :
 
-https://www.youtube.com/watch?v=XKu_SEDAykw
+**https://www.youtube.com/watch?v=XKu_SEDAykw**
+
 
 
