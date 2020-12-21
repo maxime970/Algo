@@ -130,7 +130,7 @@ benchmark <- function(n)
   kr <- kadane_r(v)
   kc <- kadane_cpp(v)
   mpsr <- max_partial_sum_r(v)
-  time <- microbenchmark(kadane_cpp(v), kadane_r(v), naive_cpp(v), naive_r(v), max_partial_sum_r(v))
+  time <- microbenchmark(kadane_cpp(v), kadane_r(v), naive_cpp(v), naive_r(v), max_partial_sum_r(v), max(tmp_tab(v)))
   return (time)
 }
 
