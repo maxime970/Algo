@@ -97,6 +97,8 @@ finalement nous retournons la valeur du maximum global.
 
 ## Tableau concaténant et sommant les éléments positifs
 
+**Complexité**: O(n)
+
 **Input**: un tableau d'entiers A de taille n >= 1
 
 **Output**: un vecteur d'entiers B de taille m>=1, m<=n
@@ -105,15 +107,17 @@ finalement nous retournons la valeur du maximum global.
 
 * Ce vecteur est initialisé avec le premier élément du tableau. 
 
-* S'il y a au fil du parcourt du tableau donné en *input* deux éléments positifs successifs, le dernier élément du vecteur prend la somme des deux derniers éléments du tableau. Ainsi, si on rencontre 3 éléments positifs successifs a, b et c. Le dernier élément du vecteur prendre d'abord la valeur a+b, puis a+b+c.
+* S'il y a au fil du parcours du tableau en *input* deux éléments positifs successifs, le dernier élément du vecteur prend la somme des deux derniers éléments du tableau. Ainsi, si on rencontre 3 éléments positifs successifs a, b et c. Le dernier élément du vecteur prendre d'abord la valeur a+b, puis a+b+c.
 
 * Sinon, on ajoute l'élément au vecteur que l'on créer.
+
+* l'input {1,2,2,-2,4,4,-7} renverra donc {5,-2,8,-7}
 
 Une telle fonction permet de simplifier le Max Subarray Problem puisqu'à la place de rechercher une somme d'éléments maximale, on n'effectue qu'une recherche de maximum.
 
 
 *Complément d'information :*
-Vidéo proposant plusieurs approches au problème :
+Vidéo proposant plusieurs approches au problème expliqué lors d'une interview "How to : Work at Google"
 
 **https://www.youtube.com/watch?v=XKu_SEDAykw**
 
