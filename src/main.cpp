@@ -22,7 +22,7 @@ NumericVector naive_cpp(NumericVector v)
       }
     }
   }
-  NumericVector res = {max, start, end};
+  NumericVector res = NumericVector::create(_["max"]=max, _["start"]=start, _["end"]=end);
   return res;
 }
 
@@ -51,7 +51,7 @@ NumericVector kadane_cpp(NumericVector v)
       s = i + 1; 
     } 
   }
-  NumericVector res = {globalMax, start, end};
+  NumericVector res = NumericVector::create(_["max"]=globalMax, _["start"]=start, _["end"]=end);
   return res;
 }
 
@@ -59,11 +59,12 @@ NumericVector kadane_cpp(NumericVector v)
 NumericVector group_positive_cpp(NumericVector v)
 {
   int n = v.length();
-  NumericVector res = {v[0]};
+  NumericVector res;
+  res.push_back(v[0]);
   
   for (int i=0; i<n-1; i++)
   {
-    if (v[i]>=0 && v[i+1]>=0)
+    if (v[i] >= 0 && v[i+1] >= 0)
     {
       int new_length = res.length();
       res[new_length-1] = res[new_length-1] + v[i+1];
@@ -83,9 +84,4 @@ NumericVector kadane2_cpp(NumericVector v)
   NumericVector res = kadane_cpp(v_grp);
   return res;
 }
-
-
-
-
-
 

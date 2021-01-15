@@ -23,7 +23,6 @@ et nous gardons en mémoire le maximum trouvé.
 Nous retournons finalement le maximum.
 
 
-
 ## Kadane:
 
 **Complexité**: O(n)
@@ -113,8 +112,8 @@ Une telle fonction permet de simplifier le Max Subarray Problem puisqu'à la pla
 * naive_cpp(NumericVector v) -> méthode naive en c++
 * kadane_r(v: vector) -> kadane en R
 * kadane_cpp(NumericVector v) -> kadane en c++
-* Kadane2_r(v: vector) -> kadane en r en sommant en préalable les éléments positifs
-* Kadane2_cpp(NumericVector v) -> kadane en c++ en sommant en préalable les éléments positifs
+* kadane2_r(v: vector) -> kadane en r en sommant en préalable les éléments positifs
+* kadane2_cpp(NumericVector v) -> kadane en c++ en sommant en préalable les éléments positifs
 * max_partial_sum_r(v: vector) -> algorithme de compléxité O(n) en R
 
 * benchmark(n) -> retourne les temps d'éxécutions des différents algorithmes sur un échantillon de taille n inclu dans {-n, n}.

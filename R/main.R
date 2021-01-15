@@ -1,5 +1,8 @@
 library(microbenchmark)
 library(Rcpp)
+#library(devtools)
+#devtools::install_github("maxime970/Algo")
+#library(Algo)
 
 naive_r <- function(v)
 {
@@ -23,7 +26,7 @@ naive_r <- function(v)
       }
     }
   }
-  return (c(max, start, end))
+  return (c("max"=max, "start"=start, "end"=end))
 }
 
 kadane_r <- function(v) 
@@ -50,7 +53,7 @@ kadane_r <- function(v)
       s = i + 1
     } 
   }
-  return (c(globalMax, start, end))
+  return (c("max"=globalMax, "start"=start, "end"=end))
 }
 
 group_positive_r <- function(v){
@@ -117,7 +120,7 @@ max_partial_sum_r <- function(A){
     }
     indx_end = max(I)
     indx_start = min(min(C[C>max(J[J<indx_end])]), min(I[I>max(J[J<indx_end])]))
-    return(list(MaxSum=maxSum, indx_start = indx_start, indx_end = indx_end))
+    return (c("max"=maxSum, "start"=indx_start, "end"=indx_end))
   }
 }
 
