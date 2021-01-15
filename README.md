@@ -12,7 +12,7 @@ Sidiya BABAH
 
 **Complexité**: O(n^2)
 
-* L'algorithme prend en entrée un tableau v de doubles à une dimension 
+* L'algorithme prend en entrée un tableau v d'entiers à une dimension 
 et retourne le sous tableau de somme maximale
 
 * Nous utilisons une borne inf (start) et une borne sup (end) afin de 
@@ -28,27 +28,19 @@ Nous retournons finalement le maximum.
 
 **Complexité**: O(n)
 
-* L'algorithme prend en entrée un tableau v de doubles à une dimension et retourne le sous tableau de somme maximale.
+* L'algorithme prend en entrée un tableau v de d'entiers à une dimension et retourne le sous tableau de somme maximale.
 Nous parcourons une seule fois la liste.
-Nous utilisons un maximum local (max) et un maximum global (globalMax) ainsi 
-qu'une borne inf et une borne sup afin de renseigner la position du
+Nous utilisons un maximum local (localMax) et un maximum global (globalMax) ainsi 
+qu'une borne inf (start) et une borne sup (end) afin de renseigner la position du
 sous tableau de somme maximale.
 
 * Pour tout i dans [1:n]:
 
-	* si v[i] > v[i] + max
-on en déduit que la borne inf doit être avancée car l'élément actuel est plus grand 
-que la somme du sous tableau allant de la borne inf à l'élément actuel.
-on définit donc la nouvelle borne inf à l'élément actuel (borne inf = i)
-on définit donc le nouveau max local comme étant la valeur de l'élément actuel (max = v[i])
+	* On ajoute la valeur actuelle du tableau v au maximum local localMax += v[i]
 
-	* si ce n'est pas le cas:
-c'est que le max local peut être encore augmenté donc on garde notre borne inf actuelle et 
-nous ajoutons l'élément actuel au max (max = max + v[i])
+	* Si le localMax est strictement plus grand que le globalMax alors on actualise la valeur du globalMax: globalMax = localMax. On actualise également les bornes start = s et end = i.
 
-	* si notre globalMax <= max
-nous devons garder en mémoire le plus grand max local (globalMax = max)
-nous devons également actualiser la nouvelle borne sup (borne sup = i)
+	* Si le localMax est strictement négative alors on sait que le sous tableau maximum ne peut pas se trouver entre 0 et i. On réinitialise donc le localMax: localMax = 0 ainsi que la nouvelle borne inf: s = i + 1
 
 * Nous avons parcouru toute la liste et nous avons vérifier à chaque fois si l'on
 pouvais trouver un sous tableau plus grand que celui définit au début
@@ -59,7 +51,7 @@ finalement nous retournons la valeur du maximum global.
 
 **Input**: un tableau d'entiers A de taille n >= 1
 
-**Output**: maxSum, indxD´ebut, indxFin
+**Output**: maxSum, indxDebut, indxFin
 
 1. Déclarer les variables locales currentSum, maxSum, indxDebut, indxFin puis les initialiser à 0,
 
@@ -75,7 +67,7 @@ finalement nous retournons la valeur du maximum global.
 
 	* currentSum+ = A[i]
 
-4. Si currentSum ??? 0:
+4. Si currentSum >= 0:
 
 	* currentSum = 0
 	* Ajouter l0, indice i vecteur au J
@@ -114,6 +106,20 @@ finalement nous retournons la valeur du maximum global.
 * l'input {1,2,2,-2,4,4,-7} renverra donc {5,-2,8,-7}
 
 Une telle fonction permet de simplifier le Max Subarray Problem puisqu'à la place de rechercher une somme d'éléments maximale, on n'effectue qu'une recherche de maximum.
+
+##  Fonctions disponibles
+
+* naive_r(v: vector) -> méthode naive en R
+* naive_cpp(NumericVector v) -> méthode naive en c++
+* kadane_r(v: vector) -> kadane en R
+* kadane_cpp(NumericVector v) -> kadane en c++
+* Kadane2_r(v: vector) -> kadane en r en sommant en préalable les éléments positifs
+* Kadane2_cpp(NumericVector v) -> kadane en c++ en sommant en préalable les éléments positifs
+* max_partial_sum_r(v: vector) -> algorithme de compléxité O(n) en R
+
+* benchmark(n) -> retourne les temps d'éxécutions des différents algorithmes sur un échantillon de taille n inclu dans {-n, n}.
+
+* test(n) -> retourne les résultats des différents algorithmes sur un échantillon de taille n inclu dans {-n, n}.
 
 
 *Complément d'information :*

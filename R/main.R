@@ -16,7 +16,7 @@ naive_r <- function(v)
     for (j in i:n)
     {
       runningSum <- runningSum + v[j]
-      if (runningSum > max){
+      if (runningSum >= max){
         max <- runningSum
         start <- i
         end <- j
@@ -28,33 +28,55 @@ naive_r <- function(v)
 
 kadane_r <- function(v) 
 {
-  # KADANE's algorithm
-  # complexity: O(n)
-  # on parcourt une seule fois la liste
-  # on actualise le max et les bornes au fur et à mesure du parcours
   n = length(v)
+  globalMax = -Inf
+  localMax = 0
   start = 0
   end = 0
-  globalMax = -Inf
-  max = -Inf
-  for (i in 1:n) 
-  {
-    if (v[i] > max + v[i]) 
-    {
-      start = i
-      max = v[i]
-    } 
-    else
-    {
-      max = max + v[i]
-    }
-    if (globalMax <= max) 
-    {
-      globalMax = max
+  s = 0 
+  
+  for (i in (1:n))
+  { 
+    localMax = localMax + v[i]
+    if (localMax > globalMax) 
+    { 
+      globalMax = localMax 
+      start = s 
       end = i
-    }
+    } 
+    if (localMax < 0) 
+    { 
+      localMax = 0
+      s = i + 1
+    } 
   }
   return (c(globalMax, start, end))
+}
+
+group_positive_r <- function(v){
+  # complexité linéaire
+  # on parcourt la liste une fois et on regroupe et somme les éléments positifs
+  res <- c(v[1])
+  for (i in (1:(length(v)-1)))
+  {
+    if (v[i]>0 & v[i+1]>0)
+    {
+      res[length(res)] <- res[length(res)] + v[i+1]
+    }
+    else
+    {
+      res <- c(res, v[i+1])
+    }
+  }
+  return(res)
+}
+
+
+kadane2_r <- function(v){
+  # kadane algorithm using group_positive
+  v_grp <- group_positive_r(v)
+  res <- kadane_r(v_grp)
+  return (res)
 }
 
 max_partial_sum_r <- function(A){
@@ -72,66 +94,58 @@ max_partial_sum_r <- function(A){
   if(length(A) == 1) 
     return(list(MaxSum=maxSum,indx_start = indx_start, indx_end =indx_end))
   
-  else {
-    
-    for(i in 1:length(A)) {
-      
+  else
+  {
+    for(i in 1:length(A))
+    {
       currentSum = currentSum + A[i]
       
-      if(currentSum <= 0) {
+      if(currentSum <= 0)
+      {
         currentSum = 0
-        J = c(J, i)}
+        J = c(J, i)
+      }
       
       if(currentSum >0 & maxSum >= currentSum)
         C = c(C, i)
       
-      if(maxSum < currentSum) {
+      if(maxSum < currentSum) 
+      {
         maxSum = currentSum
         I = c(I, i)
       }
-      
     }
-    
-    
     indx_end = max(I)
     indx_start = min(min(C[C>max(J[J<indx_end])]), min(I[I>max(J[J<indx_end])]))
-    
-    
     return(list(MaxSum=maxSum, indx_start = indx_start, indx_end = indx_end))
   }
 }
 
-
-tmp_tab <- function(tab){
-
-  # complexité linéaire
-  # on parcourt la liste une fois et on regroupe et somme les éléments positifs
-  
-  res <- c(tab[1])
-  for (i in (1:(length(tab)-1))){
-    if ( tab[i]>0 & tab[i+1]>0 ){
-      res[length(res)] <- tab[i]+tab[i+1]
-    } else{
-      res <- c(res, tab[i+1])
-    }
-  }
-  return(res)
-}
-
-# v <- c(7, -15, -9, 4, 9, 6, -12, 5, 11, -7)
-# tmp_tab(v)
-
-
 benchmark <- function(n)
 {
   v <- sample(-n:n)
-  nr <- naive_r(v)
-  nc <- naive_cpp(v)
-  kr <- kadane_r(v)
-  kc <- kadane_cpp(v)
-  mpsr <- max_partial_sum_r(v)
-  time <- microbenchmark(kadane_cpp(v), kadane_r(v), naive_cpp(v), naive_r(v), max_partial_sum_r(v), max(tmp_tab(v)))
+  time <- microbenchmark(naive_cpp(v), naive_r(v), kadane_cpp(v), kadane_r(v), kadane2_cpp(v), kadane2_r(v), max_partial_sum_r(v))
   return (time)
 }
 
+test <- function(n)
+{
+  v <- sample(-n:n)
+  #print(v)
+  NaiveR <- naive_r(v)
+  NaiveCpp <- naive_cpp(v)
+  KadaneR <- kadane_r(v)
+  KadaneCpp <- kadane_cpp(v)
+  Kadane2R <- kadane2_r(v)
+  Kadane2Cpp <- kadane2_cpp(v)
+  MaxPartialSumR <- max_partial_sum_r(v)
+  print(NaiveR)
+  print(NaiveCpp)
+  print(KadaneR)
+  print(KadaneCpp)
+  print(Kadane2R)
+  print(Kadane2Cpp)
+  print(MaxPartialSumR)
+}
+  
 

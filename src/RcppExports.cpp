@@ -27,10 +27,34 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// group_positive_cpp
+NumericVector group_positive_cpp(NumericVector v);
+RcppExport SEXP _Rprojects_group_positive_cpp(SEXP vSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type v(vSEXP);
+    rcpp_result_gen = Rcpp::wrap(group_positive_cpp(v));
+    return rcpp_result_gen;
+END_RCPP
+}
+// kadane2_cpp
+NumericVector kadane2_cpp(NumericVector v);
+RcppExport SEXP _Rprojects_kadane2_cpp(SEXP vSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type v(vSEXP);
+    rcpp_result_gen = Rcpp::wrap(kadane2_cpp(v));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_Rprojects_naive_cpp", (DL_FUNC) &_Rprojects_naive_cpp, 1},
     {"_Rprojects_kadane_cpp", (DL_FUNC) &_Rprojects_kadane_cpp, 1},
+    {"_Rprojects_group_positive_cpp", (DL_FUNC) &_Rprojects_group_positive_cpp, 1},
+    {"_Rprojects_kadane2_cpp", (DL_FUNC) &_Rprojects_kadane2_cpp, 1},
     {NULL, NULL, 0}
 };
 

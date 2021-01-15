@@ -9,3 +9,11 @@ kadane_cpp <- function(v) {
     .Call(`_Rprojects_kadane_cpp`, v)
 }
 
+group_positive_cpp <- function(v) {
+    .Call(`_Rprojects_group_positive_cpp`, v)
+}
+
+kadane2_cpp <- function(v) {
+    .Call(`_Rprojects_kadane2_cpp`, v)
+}
+
