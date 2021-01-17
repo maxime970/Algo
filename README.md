@@ -122,6 +122,11 @@ Une telle fonction permet de simplifier le Max Subarray Problem puisqu'à la pla
 
 
 *Complément d'information :*
+
+Ces techniques sont utilisées pour détécter la zone la plus lumineuse dans une image dans le domaine de la vision par ordinateur (aussi appelée vision artificielle ou vision numérique). En prennant un exemple plus concret, on peut rechercher des planètes en utilisant des images de nuit d'un ciel dégagé.
+
+Informations historiques : **https://en.wikipedia.org/wiki/Maximum_subarray_problem#History**
+
 Vidéo proposant plusieurs approches au problème expliqué lors d'une interview "How to : Work at Google"
 
 **https://www.youtube.com/watch?v=XKu_SEDAykw**
