@@ -2,9 +2,9 @@ Package: Rprojects
 Type: Package
 Title: Some solutions to the Maximum subarray problem
 Version: 1.0
-Date: 2021-01-19
+Date: 2020-10-08
 Author: Maxime GRANDVAUX, Guillaume SHI DE MILLEVILLE, Sidiya BABAH
-Maintainer: Maxime GRANDVAUX <maximeegg@hotmail.fr>
+Maintainer: Maxime GRANDVAUX <adresse.mail@gmail.com>
 Description: This package contains some solutions to the Maximum subarray problem implemented in both R and C++. 
    The aim is to compare the speed of interpreted and compiled language.
    A first naive solution was implemented in both langagues, then compared to more advanced algorithms like Kadane's algorithm.
