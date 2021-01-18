@@ -7,7 +7,7 @@ NumericVector naive_cpp(NumericVector v)
   int n = v.length();
   int start = 0;
   int end = 0;
-  int max = -INFINITY;
+  int max = INT_MIN;
   for (int i=0; i<n; i++)
   {
     int runningSum = 0;
@@ -84,4 +84,49 @@ NumericVector kadane2_cpp(NumericVector v)
   NumericVector res = kadane_cpp(v_grp);
   return res;
 }
+
+/*
+// [[Rcpp::export]]
+NumericVector max_partial_sum_cpp(NumericVector v)
+{
+  int currentSum = 0;
+  int maxSum = 0;
+  NumericVector I = {0};
+  NumericVector J = {0};
+  NumericVector C;
+  n = v.length();
+  if (n == 1)
+  {
+    NumericVector res = NumericVector::create(_["max"]=v[1], _["start"]=0, _["end"]=0);
+    return res;
+  }
+  else{
+    for (int i=0; i<n; i++){
+      currentSum += v[i];
+      if (currentSum <= 0)
+      {
+        currentSum = 0;
+        J.push_back(i);
+      }
+      if (currentSum > 0 && maxSum >= currentSum){
+        C.push_back(i);
+      }
+      if (maxSum < currentSum){
+        maxSum = currentSum;
+        I.push_back(i);
+      }
+    }
+  }
+  int end = std::max(I);
+  start = std::min(std::min(C[C>std::max(J[J<end])]), std::min(I[I>std::max(J[J<end])]));
+  NumericVector res = NumericVector::create(_["max"]=maxSum, _["start"]=start, _["end"]=end);
+  return res;
+}
+*/
+
+
+
+
+
+
 

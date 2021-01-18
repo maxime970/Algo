@@ -82,26 +82,24 @@ kadane2_r <- function(v){
   return (res)
 }
 
-max_partial_sum_r <- function(A){
+max_partial_sum_r <- function(v){
   
   currentSum = 0 # a pointer that will look over the array and evaluate the accumulated sum at each iteration
-  
   maxSum = 0 # a variable that will help us to store the max of currentSum at each step
-  
-  I = c(0); J = c(0); C =c() # a way to keep truck on the start and the end indices of the subarray we are looking for
+  I = c(0); J = c(0); C = c() # a way to keep truck on the start and the end indices of the subarray we are looking for
   # we initialize I and J with 0 to avoid -Inf returned by the max  if one of them is empty 
   
-  if(length(A) == 1 & is.na(A[1]) == TRUE)
+  if(length(v) == 1 & is.na(v[1]) == TRUE)
     stop("Not callable for an empty array") # we raise an exception
   
-  if(length(A) == 1) 
-    return(list(MaxSum=maxSum,indx_start = indx_start, indx_end =indx_end))
+  if(length(v) == 1) 
+    return(c("max"=v[1], "start"=1, "end"=1))
   
   else
   {
-    for(i in 1:length(A))
+    for(i in 1:length(v))
     {
-      currentSum = currentSum + A[i]
+      currentSum = currentSum + v[i]
       
       if(currentSum <= 0)
       {
@@ -109,7 +107,7 @@ max_partial_sum_r <- function(A){
         J = c(J, i)
       }
       
-      if(currentSum >0 & maxSum >= currentSum)
+      if(currentSum > 0 & maxSum >= currentSum)
         C = c(C, i)
       
       if(maxSum < currentSum) 
@@ -118,9 +116,9 @@ max_partial_sum_r <- function(A){
         I = c(I, i)
       }
     }
-    indx_end = max(I)
-    indx_start = min(min(C[C>max(J[J<indx_end])]), min(I[I>max(J[J<indx_end])]))
-    return (c("max"=maxSum, "start"=indx_start, "end"=indx_end))
+    end = max(I)
+    start = min(min(C[C>max(J[J<end])]), min(I[I>max(J[J<end])]))
+    return (c("max"=maxSum, "start"=start, "end"=end))
   }
 }
 
