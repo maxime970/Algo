@@ -1,8 +1,9 @@
 library(microbenchmark)
 library(Rcpp)
-#library(devtools)
-#devtools::install_github("maxime970/Algo")
-#library(Algo)
+# https://github.com/maxime970/Algo
+# library(devtools)
+# devtools::install_github("maxime970/Algo")
+# library(Algo)
 
 #  Complexité: O(n^2)
 #  L'algorithme prend en entrée un tableau v d'entiers à une dimension et retourne le sous tableau de somme maximale
@@ -13,20 +14,20 @@ naive_r <- function(v)
   # Brut Force algorithm
   # complexity: O(n^2)
   # on test toutes les combinaisons possibles de sous vecteurs possibles
-  max <- -Inf # Nous utilisons une borne inf (start) et une borne sup (end) afin de délimiter le sous tableau de taille maximale
-  start <- 0
-  end <- 0
-  n <- length(v)
+  max = -Inf # Nous utilisons une borne inf (start) et une borne sup (end) afin de délimiter le sous tableau de taille maximale
+  start = 0
+  end = 0
+  n = length(v)
   for (i in 1:n) # deux boucles successives pour essayer toutes les possibilités
   {
     runningSum <- 0
     for (j in i:n)
     {
-      runningSum <- runningSum + v[j]
+      runningSum = runningSum + v[j]
       if (runningSum >= max){
-        max <- runningSum
-        start <- i
-        end <- j
+        max = runningSum
+        start = i
+        end = j
       }
     }
   }
@@ -50,7 +51,8 @@ kadane_r <- function(v)
   start = 0
   end = 0
   s = 0 
-  
+  if (n == 1)
+    return (c("max"=v[1], "start"=1, "end"=1))
   for (i in (1:n))
   { 
     localMax = localMax + v[i] # On ajoute la valeur actuelle du tableau v au maximum local localMax += v[i]

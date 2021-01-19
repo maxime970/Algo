@@ -1,7 +1,7 @@
 [
     {
         "file": "C:/Users/Maxim/Documents/GitHub/Algo/src/main.cpp",
-        "file_last_write": 1611049196.0,
+        "file_last_write": 1611087315.0,
         "definitions": [
             {
                 "usr": "c:@F@naive_cpp#I#",
@@ -9,7 +9,7 @@
                 "parent_name": "",
                 "name": "naive_cpp(Rcpp::NumericVector)",
                 "file": "C:/Users/Maxim/Documents/GitHub/Algo/src/main.cpp",
-                "line": 5,
+                "line": 6,
                 "column": 15
             },
             {
@@ -18,7 +18,7 @@
                 "parent_name": "",
                 "name": "kadane_cpp(Rcpp::NumericVector)",
                 "file": "C:/Users/Maxim/Documents/GitHub/Algo/src/main.cpp",
-                "line": 33,
+                "line": 34,
                 "column": 15
             },
             {
@@ -27,7 +27,7 @@
                 "parent_name": "",
                 "name": "group_positive_cpp(Rcpp::NumericVector)",
                 "file": "C:/Users/Maxim/Documents/GitHub/Algo/src/main.cpp",
-                "line": 69,
+                "line": 70,
                 "column": 15
             },
             {
@@ -36,7 +36,43 @@
                 "parent_name": "",
                 "name": "kadane2_cpp(Rcpp::NumericVector)",
                 "file": "C:/Users/Maxim/Documents/GitHub/Algo/src/main.cpp",
-                "line": 101,
+                "line": 102,
+                "column": 15
+            },
+            {
+                "usr": "c:@F@max#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "max(int)",
+                "file": "C:/Users/Maxim/Documents/GitHub/Algo/src/main.cpp",
+                "line": 113,
+                "column": 5
+            },
+            {
+                "usr": "c:@F@min#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "min(int)",
+                "file": "C:/Users/Maxim/Documents/GitHub/Algo/src/main.cpp",
+                "line": 118,
+                "column": 5
+            },
+            {
+                "usr": "c:@F@slicing#&I#I#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "slicing(int &, int, int)",
+                "file": "C:/Users/Maxim/Documents/GitHub/Algo/src/main.cpp",
+                "line": 125,
+                "column": 18
+            },
+            {
+                "usr": "c:@F@max_subarray_c#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "max_subarray_c(int)",
+                "file": "C:/Users/Maxim/Documents/GitHub/Algo/src/main.cpp",
+                "line": 140,
                 "column": 15
             }
         ]

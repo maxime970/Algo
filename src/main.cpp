@@ -1,4 +1,5 @@
 #include <Rcpp.h>
+
 using namespace Rcpp;
 
 // [[Rcpp::export]]
@@ -106,4 +107,3 @@ NumericVector kadane2_cpp(NumericVector v)
   NumericVector res = kadane_cpp(v_grp);
   return res;
 }
-
